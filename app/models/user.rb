@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
 
+	has_one :profile
 	has_many :places
 	has_many :stories
 	
