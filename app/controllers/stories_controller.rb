@@ -1,4 +1,4 @@
-class StoryController < ApplicationController
+class StoriesController < ApplicationController
 	def new
 	end
 
@@ -10,5 +10,5 @@ class StoryController < ApplicationController
 
 	def destroy
 	end
-	
+
 end
