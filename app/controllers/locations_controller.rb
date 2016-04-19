@@ -1,4 +1,5 @@
 class LocationsController < ApplicationController
+
 	def edit
 	end
 
@@ -13,6 +14,5 @@ class LocationsController < ApplicationController
 
 	def show
 	end
-	
 
 end

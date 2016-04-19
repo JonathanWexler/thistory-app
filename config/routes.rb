@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
 
-  devise_for :users
-  devise_for :admins
+  devise_for :users, :admins
 
   resources :places
   
   # main root of app
-  root "home#index"
+  root "users#index"
 
   resources :profiles, only: [:new, :create, :show, :edit, :update]
 

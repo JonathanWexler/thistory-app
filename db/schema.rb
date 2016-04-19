@@ -49,6 +49,17 @@ ActiveRecord::Schema.define(version: 20160419232540) do
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
 
+  create_table "stories", force: :cascade do |t|
+    t.datetime "time_period"
+    t.string   "title"
+    t.text     "bodys"
+    t.integer  "user_id"
+    t.integer  "place_id"
+    t.integer  "status"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
