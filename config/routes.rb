@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+
   devise_for :users
   devise_for :admins
+
+  resources :places
+  
   # main root of app
   root "home#index"
 
