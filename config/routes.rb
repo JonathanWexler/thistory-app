@@ -1,13 +1,6 @@
 Rails.application.routes.draw do
 # main root of app
   root "home#index"
-
-   devise_for :users, controllers: {
-    sessions: 'users/sessions',
-    registrations: 'users/registrations',
-    passwords: 'users/passwords'
-  }
-
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
     registrations: 'admins/registrations',
@@ -15,6 +8,21 @@ Rails.application.routes.draw do
     confirmations: 'admins/confirmations',
     unlocks: 'admins/unlocks'
   }
+
+    devise_scope :admin do
+    get "login_admin", to: "admins/sessions#new"
+    delete 'admins/user/:id' => 'admins/registrations#destroy_user', :as => :admin_destroy_user
+    get 'admins/user/:id' => 'admins/registrations#edit_user', :as => :admin_edit_user
+    # resources :users
+  end
+  
+   devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations',
+    passwords: 'users/passwords'
+  }
+
+
 
   #this defines the scope for devise with users
   #if logged in, will root to users index
@@ -26,12 +34,7 @@ Rails.application.routes.draw do
     resources :profiles
   end
 
-  devise_scope :admin do
-    get "login_admin", to: "admins/sessions#new"
-    delete 'admins/user/:id' => 'admins/registrations#destroy_user', :as => :admin_destroy_user
-    get 'admins/user/:id' => 'admins/registrations#edit_user', :as => :admin_edit_user
-    resources :users
-  end
+
 
   resources :profiles, only: [:new, :create, :show, :edit, :update]
 
