@@ -60,6 +60,14 @@ ActiveRecord::Schema.define(version: 20160419235845) do
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
 
+  create_table "references", force: :cascade do |t|
+    t.string   "title"
+    t.string   "link"
+    t.string   "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "stories", force: :cascade do |t|
     t.datetime "time_period"
     t.string   "title"
